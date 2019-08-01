@@ -4,9 +4,11 @@ import { Note } from 'src/app/modelos/note.model';
 import { HttpHeaders, HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { NotePost } from 'src/app/modelos/note.post.model';
+import { environment } from 'src/environments/environment';
+import { RespuestaNote } from 'src/app/modelos/respuesta-note.model';
 
 
-const ENDPOINT = `http://35.237.248.180:8080/notes/`;
+const ENDPOINT = `${environment.url}`;
 
 @Injectable({
   providedIn: 'root'
@@ -34,11 +36,10 @@ export class NotasService {
       map(response => response as Note)
     );
   }
-/*
-  public eliminarDimensionCaja(idDimensionCaja: number): Observable<RespuestaDimensionCaja> {
-    return this.http.delete(`${ENDPOINT}/${idDimensionCaja}`).pipe(
-      map(response => response as RespuestaDimensionCaja)
-    );
-  }*/
-}
 
+  public eliminar(id: string): Observable<RespuestaNote> {
+    return this.http.delete(`${ENDPOINT}${id}`).pipe(
+      map(response => response as RespuestaNote)
+    );
+  }
+}
