@@ -16,19 +16,5 @@ public interface RepositorioNota extends MongoRepository<Nota, String> {
 	 */
 	public Nota findByIdNota(String idNota);
 
-	/**
-	 * Metodo para buscar las notas que pertenenen a un autor
-	 * 
-	 * @param autor
-	 * @return lista de notas
-	 */
-	public List<Nota> findByAutor(String autor);
-
-	/**
-	 * Metodo para contar cuantas notas pertenecen a un autor
-	 * 
-	 * @param autor
-	 * @return
-	 */
-	public Long countByAutor(String autor);
+	
 }
