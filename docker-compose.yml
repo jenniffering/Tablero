@@ -1,0 +1,29 @@
+version: '3.3'
+
+services:
+  database:
+    image: mongo:4.0.10-xenial
+    ports:
+      - "27017:27017"
+    environment:
+    #   - MONGO_INITDB_ROOT_USERNAME=root
+    #   - MONGO_INITDB_ROOT_PASSWORD=rWevc3NYLGYRukN
+      - MONGO_INITDB_DATABASE=Tablero
+    volumes:
+#      - type: bind
+#        source: ./database/init.js
+#        target: /docker-entrypoint-initdb.d/init.js
+      - type: volume
+        source: db
+        target: /data/db
+  #  command: "--wiredTigerCacheSizeGB 0.2"
+  admin:
+    image: mongo-express:0.49.0
+    restart: always
+    ports:
+      - "8081:8081"
+    environment: 
+      - ME_CONFIG_MONGODB_PORT=27017
+      - ME_CONFIG_MONGODB_SERVER=database
+volumes:
+  db:
