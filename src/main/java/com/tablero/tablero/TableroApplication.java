@@ -12,8 +12,8 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan
 public class TableroApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(TableroApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(TableroApplication.class, args);
+    }
 
 }
